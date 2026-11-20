@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "opspilot": {
+      "type": "stdio",
+      "command": "cmd",
+      "args": ["/c", "npm", "run", "--silent", "mcp"]
+    }
+  }
+}

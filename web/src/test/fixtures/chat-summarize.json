@@ -1,0 +1,45 @@
+{
+	"requestId": "0f8d6a1e-0000-4000-8000-00000000f1f1",
+	"conversationId": "5b1f3c2e-0000-4000-8000-00000000f1f1",
+	"answer": "ok",
+	"trace": [
+		{
+			"type": "summarize",
+			"content": "p1,ok,p2,ok,p3,ok,p4,ok",
+			"messagesSummarized": 8,
+			"node": "contexto"
+		},
+		{
+			"type": "route",
+			"route": "react",
+			"reason": "Roteador não configurado; seguindo com react.",
+			"source": "fallback",
+			"node": "roteador"
+		},
+		{
+			"type": "answer",
+			"content": "ok",
+			"node": "react"
+		}
+	],
+	"metrics": {
+		"llmCalls": 2,
+		"latencyMs": 42,
+		"historyMessages": 8,
+		"memoryFacts": 0,
+		"promptTokens": null,
+		"contextBreakdown": {
+			"question": 1,
+			"history": 48,
+			"memory": 0,
+			"summary": 14,
+			"total": 63
+		},
+		"contextTrimmed": {
+			"historyMessages": 0,
+			"memoryFacts": 0,
+			"summaryTruncated": false
+		},
+		"modelUsed": "openrouter/free"
+	}
+}

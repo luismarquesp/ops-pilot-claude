@@ -1,0 +1,59 @@
+{
+	"requestId": "0f8d6a1e-0000-4000-8000-00000000f1f1",
+	"conversationId": "5b1f3c2e-0000-4000-8000-00000000f1f1",
+	"answer": "Aprovado pelo plantonista e executado. Resultado: {\"id\":1,\"title\":\"Fila travada\",\"service\":\"payments\",\"severity\":\"high\",\"status\":\"resolved\",\"resolvedAt\":\"2026-11-20T12:30:00.000Z\",\"summary\":null}",
+	"trace": [
+		{
+			"type": "decision",
+			"approvalId": "aaaaaaaa-0000-4000-8000-00000000f1f1",
+			"decision": "approved",
+			"result": "{\"id\":1,\"title\":\"Fila travada\",\"service\":\"payments\",\"severity\":\"high\",\"status\":\"resolved\",\"resolvedAt\":\"2026-11-20T12:30:00.000Z\",\"summary\":null}",
+			"node": "contexto"
+		},
+		{
+			"type": "route",
+			"route": "react",
+			"reason": "Retomada após a decisão do plantonista, na rota do turno pausado.",
+			"source": "resume",
+			"node": "roteador"
+		},
+		{
+			"type": "action",
+			"tool": "resolve_incident",
+			"args": {
+				"id": 1
+			},
+			"node": "react"
+		},
+		{
+			"type": "observation",
+			"content": "Aprovado pelo plantonista e executado. Resultado: {\"id\":1,\"title\":\"Fila travada\",\"service\":\"payments\",\"severity\":\"high\",\"status\":\"resolved\",\"resolvedAt\":\"2026-11-20T12:30:00.000Z\",\"summary\":null}",
+			"node": "react"
+		},
+		{
+			"type": "answer",
+			"content": "Aprovado pelo plantonista e executado. Resultado: {\"id\":1,\"title\":\"Fila travada\",\"service\":\"payments\",\"severity\":\"high\",\"status\":\"resolved\",\"resolvedAt\":\"2026-11-20T12:30:00.000Z\",\"summary\":null}",
+			"node": "react"
+		}
+	],
+	"metrics": {
+		"llmCalls": 1,
+		"latencyMs": 42,
+		"historyMessages": 0,
+		"memoryFacts": 0,
+		"promptTokens": null,
+		"contextBreakdown": {
+			"question": 6,
+			"history": 0,
+			"memory": 0,
+			"summary": 0,
+			"total": 6
+		},
+		"contextTrimmed": {
+			"historyMessages": 0,
+			"memoryFacts": 0,
+			"summaryTruncated": false
+		},
+		"modelUsed": "openrouter/free"
+	}
+}

@@ -1,0 +1,115 @@
+/*
+ * Tokens da war room (design.instructions.md). Componentes só usam os nomes
+ * semânticos daqui; a paleta crua não sai deste arquivo. Os pares texto/fundo
+ * são conferidos por src/styles/contrast.test.ts nos dois temas (WCAG AA).
+ */
+:root {
+	color-scheme: light dark;
+
+	/* Tema claro */
+	--color-bg: #ffffff;
+	--color-surface: #f4f5f7;
+	--color-surface-raised: #ffffff;
+	--color-text: #16181d;
+	--color-muted: #50565f;
+	--color-border: #7d838d;
+	--color-border-subtle: #e1e4e9;
+	--color-primary: #1d4ed8;
+	--color-primary-hover: #1e40af;
+	--color-on-primary: #ffffff;
+	--color-danger: #b42318;
+	--color-danger-bg: #fdeceb;
+	--color-warning: #7a4f00;
+	--color-warning-bg: #fdf3dc;
+	--color-success: #17692f;
+	--color-success-bg: #e6f4ea;
+	--color-info: #1b5aa0;
+	--color-info-bg: #e7f0fb;
+	--color-focus: #1d4ed8;
+	--color-overlay: rgb(15 17 21 / 0.45);
+
+	/* Espaçamento — escala de 4px */
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-6: 24px;
+	--space-8: 32px;
+	--space-12: 48px;
+	--space-16: 64px;
+
+	/* Tipografia — razão ~1.25, em rem */
+	--text-xs: 0.75rem;
+	--text-sm: 0.875rem;
+	--text-base: 1rem;
+	--text-lg: 1.25rem;
+	--text-xl: 1.5625rem;
+	--text-2xl: 1.9375rem;
+	--weight-regular: 400;
+	--weight-medium: 500;
+	--weight-semibold: 600;
+	--leading-body: 1.5;
+	--leading-title: 1.25;
+	--font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	--font-mono: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, Consolas, monospace;
+
+	/* Forma e movimento */
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 12px;
+	--shadow-raised: 0 1px 2px rgb(15 17 21 / 0.08), 0 4px 12px rgb(15 17 21 / 0.06);
+	--duration-fast: 150ms;
+	--focus-ring: 2px;
+	--target-min: 44px;
+	--measure: 70ch;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		--color-bg: #0f1115;
+		--color-surface: #171a21;
+		--color-surface-raised: #1f232c;
+		--color-text: #e6e8ec;
+		--color-muted: #a7aeb9;
+		--color-border: #737b88;
+		--color-border-subtle: #2b303a;
+		--color-primary: #8bb0ff;
+		--color-primary-hover: #a9c4ff;
+		--color-on-primary: #0f1115;
+		--color-danger: #ff9b91;
+		--color-danger-bg: #3a1714;
+		--color-warning: #f2c36b;
+		--color-warning-bg: #352710;
+		--color-success: #7fd69a;
+		--color-success-bg: #12301c;
+		--color-info: #8cc2ff;
+		--color-info-bg: #132a45;
+		--color-focus: #8bb0ff;
+		--color-overlay: rgb(0 0 0 / 0.6);
+		--shadow-raised: none;
+	}
+}
+
+:root[data-theme="dark"] {
+	--color-bg: #0f1115;
+	--color-surface: #171a21;
+	--color-surface-raised: #1f232c;
+	--color-text: #e6e8ec;
+	--color-muted: #a7aeb9;
+	--color-border: #737b88;
+	--color-border-subtle: #2b303a;
+	--color-primary: #8bb0ff;
+	--color-primary-hover: #a9c4ff;
+	--color-on-primary: #0f1115;
+	--color-danger: #ff9b91;
+	--color-danger-bg: #3a1714;
+	--color-warning: #f2c36b;
+	--color-warning-bg: #352710;
+	--color-success: #7fd69a;
+	--color-success-bg: #12301c;
+	--color-info: #8cc2ff;
+	--color-info-bg: #132a45;
+	--color-focus: #8bb0ff;
+	--color-overlay: rgb(0 0 0 / 0.6);
+	--shadow-raised: none;
+}

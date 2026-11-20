@@ -1,0 +1,76 @@
+# Publica a war room (web/) no GitHub Pages — specs/019.
+# Contrato: specs/019-pages-deploy/contracts/pages-workflow.md
+# (verificado por web/src/deploy.test.ts).
+name: Pages
+
+on:
+  push:
+    branches: [main]
+    # Só mudanças na war room ou neste workflow publicam (FR-001, FR-003).
+    paths:
+      - "web/**"
+      - ".github/workflows/pages.yml"
+  # Publicação manual: Actions → Pages → Run workflow (FR-002).
+  workflow_dispatch:
+
+# Uma publicação por vez (FR-009): a que está rodando termina; das que esperam,
+# o GitHub mantém só a mais nova.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+# Nada no nível do workflow: cada job declara o mínimo que usa (FR-008).
+permissions: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Só leitura: este job roda npm ci e os testes, nunca publica.
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      # Descobre o caminho real do site (/<repo> ou vazio com domínio próprio).
+      - id: pages
+        uses: actions/configure-pages@v6
+
+      - run: npm ci --prefix web
+
+      # Qualquer falha aqui interrompe antes do upload: o deploy não roda e o
+      # site segue com a versão anterior (FR-004).
+      - run: npm --prefix web run typecheck
+
+      - run: npm --prefix web test
+
+      - run: npm --prefix web run build
+        env:
+          OPSPILOT_WEB_BASE: ${{ steps.pages.outputs.base_path }}/
+          # Endereço padrão da API (opcional). É `vars`, não `secrets`: o valor
+          # fica embutido no JS publicado de qualquer forma (FR-007).
+          VITE_OPSPILOT_API_URL: ${{ vars.OPSPILOT_API_URL }}
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: web/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    # Publicar e provar a identidade ao Pages (OIDC); nada mais.
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,2 @@
+# Scripts de shell precisam de LF para rodar no bash (specs/011).
+*.sh text eol=lf

@@ -1,0 +1,57 @@
+{
+	"requestId": "0f8d6a1e-0000-4000-8000-00000000f1f1",
+	"conversationId": "5b1f3c2e-0000-4000-8000-00000000f1f1",
+	"answer": "Há **1 alerta** disparando:\n\n- pagamentos (SEV2)",
+	"trace": [
+		{
+			"type": "route",
+			"route": "react",
+			"reason": "Pergunta direta que pede uma tool.",
+			"source": "router",
+			"node": "roteador"
+		},
+		{
+			"type": "thought",
+			"content": "Vou listar os alertas disparando.",
+			"node": "react"
+		},
+		{
+			"type": "action",
+			"tool": "list_alerts",
+			"args": {
+				"status": "firing"
+			},
+			"node": "react"
+		},
+		{
+			"type": "observation",
+			"content": "[{\"id\":1,\"service\":\"pagamentos\",\"severity\":\"SEV2\"}]",
+			"node": "react"
+		},
+		{
+			"type": "answer",
+			"content": "Há **1 alerta** disparando:\n\n- pagamentos (SEV2)",
+			"node": "react"
+		}
+	],
+	"metrics": {
+		"llmCalls": 3,
+		"latencyMs": 42,
+		"historyMessages": 0,
+		"memoryFacts": 0,
+		"promptTokens": null,
+		"contextBreakdown": {
+			"question": 4,
+			"history": 0,
+			"memory": 0,
+			"summary": 0,
+			"total": 4
+		},
+		"contextTrimmed": {
+			"historyMessages": 0,
+			"memoryFacts": 0,
+			"summaryTruncated": false
+		},
+		"modelUsed": "openrouter/free"
+	}
+}

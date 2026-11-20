@@ -1,0 +1,8 @@
+{
+	"requestId": "0f8d6a1e-0000-4000-8000-00000000f1f1",
+	"error": "model_unavailable",
+	"modelsTried": [
+		"modelo/principal",
+		"modelo/reserva:free"
+	]
+}
